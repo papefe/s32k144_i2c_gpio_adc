@@ -14,4 +14,5 @@
 void DIO_Init (void);
 uint8_t HAL_GPIO_ReadInputs(void);
 
+
 #endif /* HAL_DIO_DIO_H_ */

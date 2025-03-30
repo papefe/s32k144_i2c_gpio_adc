@@ -9,7 +9,6 @@
 #include "dio.h"
 #include "pins_driver.h"   // Incluye la definición de pin_settings_config_t, PINS_Init, etc.
 #include "S32K144.h"       // Para definiciones de constantes
-#include "dio_hwab_pin.h"
 
 /* Definir tipos para la dirección, configuración y valor, según tu diseño. Por ejemplo: */
 typedef enum {
@@ -95,56 +94,4 @@ uint8_t HAL_GPIO_ReadInputs(void) {
     }
 
     return estado;
-}
-
-/* Función que inicializa los 8 pines configurados como entradas con pull-up */
-void DIO_InitAll(void)
-{
-    /* Inicializa PIN_DIO_1 (corresponde a PTC7) */
-    if (DIO_HwAb_Init(PIN_DIO_1, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error, por ejemplo, detener ejecución o registrar error */
-    }
-
-    /* Inicializa PIN_DIO_2 (corresponde a PTC6) */
-    if (DIO_HwAb_Init(PIN_DIO_2, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_3 (corresponde a PTB17) */
-    if (DIO_HwAb_Init(PIN_DIO_3, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_4 (corresponde a PTB14) */
-    if (DIO_HwAb_Init(PIN_DIO_4, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_5 (corresponde a PTB15) */
-    if (DIO_HwAb_Init(PIN_DIO_5, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_6 (corresponde a PTB16) */
-    if (DIO_HwAb_Init(PIN_DIO_6, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_7 (corresponde a PTC14) */
-    if (DIO_HwAb_Init(PIN_DIO_7, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
-
-    /* Inicializa PIN_DIO_8 (corresponde a PTC3) */
-    if (DIO_HwAb_Init(PIN_DIO_8, DIO_INPUT, DIO_PULLUP, DIO_LOW) != DIO_RESULT_SUCCESS)
-    {
-        /* Manejo de error */
-    }
 }
