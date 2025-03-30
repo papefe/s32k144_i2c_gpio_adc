@@ -15,6 +15,34 @@ Debug output is provided via semihosting.
 
 ---
 
+## ADC Voltage Conversion
+
+The ADC is configured with an internal reference of 3.3V and an 8-bit resolution (0–255). However, the input voltage to be measured ranges from 5V to 20V. To safely measure these voltages, a voltage divider is implemented on the analog input. In our design, the divider scales down the input voltage to approximately 15% of its original value (scaling factor = **0.15**). This ensures that even a maximum input of 20V is reduced to about 3V, which is within the ADC's measurable range.
+
+The conversion process is as follows:
+
+1. **Calculate the ADC Voltage:**
+
+   $$V_{adc} = \left(\frac{ADC\_value}{255}\right) \times 3.3V$$
+
+2. **Calculate the Actual Input Voltage:**
+
+   $$V_{in} = \frac{V_{adc}}{0.15}$$
+
+For example, if the ADC value is 85:
+
+- **ADC Voltage:**
+   
+  $$V_{adc} = \left(\frac{85}{255}\right) \times 3.3\,V \approx 1.1\,V$$
+
+- **Input Voltage:**
+   
+  $$V_{in} = \frac{1.1\,V}{0.15} \approx 7.33\,V$$
+
+**Note:** The scaling factor **0.15** is determined by the resistor values in the voltage divider. If these resistor values change, the scaling factor must be recalculated accordingly.
+
+---
+
 ## I²C Registers
 
 The device exposes a set of 1-byte registers accessible over I²C:
